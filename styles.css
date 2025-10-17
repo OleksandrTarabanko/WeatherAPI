@@ -1,0 +1,33 @@
+.city-input{
+    color: blue;
+    font-size: 22px;
+    border-radius: 5px;
+    border: 2px solid black;
+}
+
+.country-input{
+    cursor: pointer;
+    font-size: 22px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.search-button{
+    cursor: pointer;
+    font-size: 22px;
+    border-radius: 5px;
+    border: 2px solid blue;
+    color: white;
+    background-color: blue;
+}
+
+.search-button:hover{
+    border-color: blue;
+    color: blue;
+    background-color: white;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.font{
+    font-size: 22px;
+}

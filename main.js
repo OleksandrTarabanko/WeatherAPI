@@ -20,13 +20,10 @@ countrySelect.insertAdjacentHTML(
 
 searchButton.onclick = async () => {
   mainContentArea.innerHTML = " ";
-  // MY CURRENT TIME
   const currentTime = new Date();
   console.log(currentTime);
-  // TAKE DATA FROM API
   const weatherData = await findWeather(cityInput.value, countrySelect.value);
   console.log(weatherData);
-  // COMPARE API DATA AND MY CURRENT TIME
 
   const {
     time,
@@ -42,6 +39,8 @@ searchButton.onclick = async () => {
   const temperature = temperatureData[indexToFind];
   const humidity = humidityData[indexToFind];
   const weatherState = weatherDescriptionByCode(weatherCode[indexToFind]);
+
+  // You need to show up 4 or 5 previous forecasts(i think you need to do this by reducing "indextoFind" --- indexToFind - 1,2,3 etc)
 
   createContent(
     weatherData.location.name,

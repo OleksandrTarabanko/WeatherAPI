@@ -3,24 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=+, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles.css" />
     <title>Weather API</title>
   </head>
   <body>
     <input
+      class="city-input"
       placeholder="Your City"
       list="city-list"
       data-name="city"
       type="text"
       required
     />
-    <select required name="country">
+    <select class="country-input" required name="country">
       <option value="" selected disabled>Your Country</option>
     </select>
     <datalist id="city-list"></datalist>
 
     <!-- Maybe time choice opportunity? -->
     <!-- <input data-name="time" type="time" /> -->
-    <button data-name="searchButton">Search</button>
+    <button class="search-button" data-name="searchButton">Search</button>
     <div class="main"></div>
     <script type="module" src="./main.js"></script>
   </body>
