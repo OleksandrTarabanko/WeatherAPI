@@ -6,9 +6,20 @@
     <title>Weather API</title>
   </head>
   <body>
-    <input data-name="city" type="text" required />
-    <input data-name="country" type="text" required />
-    <input data-name="time" type="time" />
+    <input
+      placeholder="Your City"
+      list="city-list"
+      data-name="city"
+      type="text"
+      required
+    />
+    <select required name="country">
+      <option value="" selected disabled>Your Country</option>
+    </select>
+    <datalist id="city-list"></datalist>
+
+    <!-- Maybe time choice opportunity? -->
+    <!-- <input data-name="time" type="time" /> -->
     <button data-name="searchButton">Search</button>
     <div class="main"></div>
     <script type="module" src="./main.js"></script>

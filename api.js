@@ -1,5 +1,3 @@
-import { cityInput, countryInput } from "./main.js";
-
 const weatherCodes = {
   0: "Clear sky",
   1: "Mainly clear",
@@ -31,20 +29,35 @@ const weatherCodes = {
   99: "Thunderstorm with heavy hail",
 };
 
-async function getData() {
-  const coordinatesUrl = `https://nominatim.openstreetmap.org/search?city=${cityInput.value}&country=${countryInput.value}&format=json`;
+async function findCoordinate(city, country) {
+  const coordinatesUrl = `https://nominatim.openstreetmap.org/search?city=${city}&country=${country}&format=json`;
   const coordinatesResponse = await fetch(coordinatesUrl);
   const coordinatesData = await coordinatesResponse.json();
+  console.log(coordinatesData[0]);
+  return coordinatesData[0];
+}
 
-  const wetterUrl = `https://api.open-meteo.com/v1/forecast?latitude=${coordinatesData[0].lat}&longitude=${coordinatesData[0].lon}&minutely_15=temperature_2m,relative_humidity_2m,weather_code&timezone=auto`;
+async function getWeather(lat, lon) {
+  const wetterUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&minutely_15=temperature_2m,relative_humidity_2m,weather_code&timezone=auto`;
   const wetterResponse = await fetch(wetterUrl);
   const wetterGeneralData = await wetterResponse.json();
+  console.log(wetterGeneralData);
   const wetterData = wetterGeneralData.minutely_15;
+  console.log(wetterData);
   return wetterData;
+}
+
+async function findWeather(city, country) {
+  const location = await findCoordinate(city, country);
+  const weather = await getWeather(location.lat, location.lon);
+  return {
+    location,
+    weather,
+  };
 }
 
 function weatherDescriptionByCode(code) {
   return `${weatherCodes[code]}`;
 }
 
-export { getData, weatherDescriptionByCode };
+export { findWeather, weatherDescriptionByCode };
