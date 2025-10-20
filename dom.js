@@ -3,9 +3,7 @@ import { mainContentArea } from "./main.js";
 function createContent(city, country, temperature, humidity, weatherState) {
   const currentPosition = document.createElement("h1");
   currentPosition.classList.add("font");
-  currentPosition.textContent = `You're searching weather for ${city} in ${
-    country.charAt(0).toUpperCase() + country.slice(1).toLowerCase()
-  }`;
+  currentPosition.textContent = `You're searching weather for ${city} in ${country}`;
 
   const currentTemperature = document.createElement("p");
   currentTemperature.classList.add("font");
